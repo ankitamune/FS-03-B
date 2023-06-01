@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body{
+        box-sizing: border-box;
+        margin:0;
+      }
+      .slide>img{
+        width: 100%;
+      }
+      .slide{
+          width: 100%;
+      }
+      .slide-container{
+        position: relative;
+        border: 2px solid;
+        width: 100%;
+      }
+      .arrow{
+        position: absolute;
+        cursor: pointer;
+        top:45%; 
+        background-color: rgba(205, 189, 189, 0.447);
+        padding:8px;
+        border-radius: 30%;
+      }
+      .next{
+        right:10px
+      }
+      .prev{
+        left:10px;
+      }
+      .slide{
+        display: none;
+      }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="slide">
+            <img src="Images/image1.jpg" alt="">
+        </div>
+        <div class="slide">
+            <img src="Images/image2.jpg" alt="">
+        </div>
+        <div class="slide">
+            <img src="Images/image3.jpeg" alt="">
+        </div>
+    </div>
+    <span class="arrow next" onclick="controller(1)">&#10095</span>
+    <span class="arrow prev" onclick="controller(-1)">&#10094</span>
+    <script>
+      let flag=1;
+      function controller(x){
+        flag+=x;
+    
+        slideshow(flag);
+      }
+      slideshow(flag);
+      function slideshow(num){
+        let slides=document.getElementsByClassName('slide');
+        if (num == slides.length){
+          num=0;
+          flag=0;
+        }
+        if(num==-1){
+          num=slides.length-1;
+          flag=slides.length - 1;
+        }
+      //console.log(slides);
+        for (let y of slides) {
+          y.style.display = "none";
+        }
+        slides[num].style.display="block"
+      }
+    </script>
+</body>
+</html>

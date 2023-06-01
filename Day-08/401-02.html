@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .main{
+        width: 100px;
+        height: 70px;
+        margin: auto;
+      }
+      .container{
+        width: 90px;
+        height: 25px;
+        display: block;
+        font-size: large;
+        margin: 5px;
+        text-align: center;
+        border: solid 2px;
+      }
+    </style>
+</head>
+<body>
+    <div class="main">
+   <div class="container">1st child</div>
+   <div class="container">2nd child</div>
+   <div class="container">3rd child</div>
+   <div class="container">4th child</div>
+   <div class="container">5th child</div>
+   <div class="container">6th child</div>
+   <div class="container">7th child</div>
+   <div class="container">8th child</div>
+   <div class="container">9th child</div>
+   <div class="container">10th child</div>
+   <div class="container">11th child</div>
+   <div class="container">12th child</div>
+   <div class="container">13th child</div>
+   <div class="container">14th child</div>
+   <div class="container">15th child</div>
+   <div class="container">16th child</div>
+   <div class="container">17th child</div>
+    </div>
+    <script>
+      let arr=document.getElementsByClassName('container');
+        for(let idx=0;idx<arr.length;idx++){
+            if(idx==0){
+                arr[idx].style.backgroundColor="blue";
+            }
+            else if (idx==8){
+                arr[idx].style.backgroundColor="green"
+            }
+            else if(idx==16){
+                arr[idx].style.backgroundColor = "palevioletred";
+            }
+            else if(idx%2==1){
+                arr[idx].style.backgroundColor="lime"
+            }
+            else {
+                arr[idx].style.backgroundColor = "white";
+            }
+         }
+  </script>
+</body>
+</html>

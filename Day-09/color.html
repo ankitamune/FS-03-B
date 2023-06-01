@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .text-box {
+      width: 200px;
+      height: 30px;
+      border: 1px solid #ccc;
+      padding: 5px;
+    }
+  </style>
+  <script>
+    function changeColor() {
+      var dropdown = document.getElementById("colorDropdown");
+      var textBox = document.getElementById("textBox");
+
+      var selectedColor = dropdown.value;
+      textBox.style.backgroundColor = selectedColor;
+    }
+  </script>
+</head>
+<body>
+  <form>
+    <select id="colorDropdown" onchange="changeColor()">
+      <option value="">Select a color</option>
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+      <option value="yellow">Yellow</option>
+    </select>
+    <br>
+    <input type="text" id="textBox" class="text-box" placeholder="Enter text">
+  </form>
+</body>
+</html>
