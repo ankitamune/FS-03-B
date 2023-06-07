@@ -2,34 +2,58 @@
 <html>
 <head>
   <style>
-    .text-box {
-      width: 200px;
+    .container{
+      position: relative;
+      display: flex;
+      margin: auto;
+      
+    }
+    button{
+      width: 100px;
       height: 30px;
-      border: 1px solid #ccc;
-      padding: 5px;
+      background-color: rgb(17, 223, 10);
+      border: none;
+      border-radius: 5px;
+      margin-left:40px;
+    }
+    select{
+      border-radius: 5px;
+      border: 2px solid ;
+      width: 150px;
+      height: 30px;
+      
     }
   </style>
+  
+</head>
+<body id="body">
+  <center>
+    <div class="container">
+    <form>
+      <select id="colorDropdown" >
+        <option value="">Select a color</option>
+        <option value="white">White</option>
+        <option value="red">Red</option>
+        <option value="orange">Orange</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+        <option value="indigo">Indigo</option>
+        <option value="violet">Violet</option>
+      </select>
+      <br>
+     
+    </form>
+    <button onclick="changeColor()">Change color</button>
+  </div>
+  </center>
   <script>
     function changeColor() {
       var dropdown = document.getElementById("colorDropdown");
-      var textBox = document.getElementById("textBox");
+      var body = document.getElementById("body");
 
       var selectedColor = dropdown.value;
-      textBox.style.backgroundColor = selectedColor;
+      body.style.backgroundColor =selectedColor ;
     }
   </script>
-</head>
-<body>
-  <form>
-    <select id="colorDropdown" onchange="changeColor()">
-      <option value="">Select a color</option>
-      <option value="red">Red</option>
-      <option value="blue">Blue</option>
-      <option value="green">Green</option>
-      <option value="yellow">Yellow</option>
-    </select>
-    <br>
-    <input type="text" id="textBox" class="text-box" placeholder="Enter text">
-  </form>
 </body>
 </html>
