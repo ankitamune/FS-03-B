@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Light/Dark Theme</title>
+  <style>
+    
+    
+    .container {
+      margin: 30px;
+    }
+    
+    .theme-label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <label class="theme-label" for="themeCheckbox">Dark Theme:</label>
+    <input type="checkbox" id="themeCheckbox">
+  </div>
+
+  <script>
+    var checkbox = document.getElementById("themeCheckbox");
+    var body = document.body;
+
+    checkbox.addEventListener("change", function() {
+      if (checkbox.checked) {
+        body.style.backgroundColor = "black";
+        body.style.color = "white";
+      } else {
+        body.style.backgroundColor = "white";
+        body.style.color = "black";
+      }
+    });
+  </script>
+</body>
+</html>

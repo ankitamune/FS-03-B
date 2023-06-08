@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+          border-collapse: collapse;
+        }
+        th, td {
+          border: 1px solid black;
+          padding: 8px;
+          
+        }
+        td{
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    
+    <table id="myTable">
+        <tr>
+          <th>physics</th>
+          <th>chemistry</th>
+          <th>Maths</th>
+        </tr>
+        <tr>
+          <td>66</td>
+          <td>55</td>
+          <td>56</td>
+        </tr>
+        <tr>
+          <td>77</td>
+          <td>88</td>
+          <td>99</td>
+        </tr>
+        <tr>
+          <td>66</td>
+          <td>59</td>
+          <td>57</td>
+        </tr>
+        <tr>
+            <td>86</td>
+            <td>56</td>
+            <td>93</td>
+        </tr>
+        <tr>
+            <td>68</td>
+            <td>45</td>
+            <td>65</td>
+        </tr>
+        <tr>
+            <td>55</td>
+            <td>68</td>
+            <td>78</td>
+        </tr>
+        <tr>
+            <td>88</td>
+            <td>86</td>
+            <td>84</td>
+        </tr>
+        </table>
+    <script>
+        var table = document.getElementById("myTable");
+        var rows = table.getElementsByTagName("tr");
+        for (var i = 1; i < rows.length; i++) {
+            if (i % 2 === 0) {
+                rows[i].style.backgroundColor = "red";
+            } else {
+                rows[i].style.backgroundColor = "green";
+            }
+        }
+    </script>
+</body>
+</html>
