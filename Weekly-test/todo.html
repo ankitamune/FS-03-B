@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+body{
+        /* background-color: rgb(167, 218, 241); */
+        margin: 0;
+        padding: 0;
+       
+      }
+  
+  .heading{
+    margin: 30px 0px;
+    font-size: 23px;
+    font-weight: 600;
+    text-align: center;
+    
+  }
+
+  .container{
+    width: 60%;
+    margin: 0px auto;
+
+  }
+
+  .form{
+    display: flex;
+    /* justify-content: space-between; */
+    margin-bottom: 30px; 
+    margin-left: 170px;
+  }
+
+  .form input{
+    /* margin: 5px; */
+    margin-top: 30px;
+    height: 30px;
+    width: 300px;
+    font-size: 18px;
+    padding-left: 5px;
+    border: 1px solid rgba(134, 90, 90, 0.696);
+  }
+
+  .form input:focus{
+    outline: none;
+    border: 2px solid rgb(171, 108, 108) ;
+  }
+
+  .form button{
+    background-color:rgb(8, 6, 6) ;
+    width: 70px;
+    height: 33px;
+    color: whitesmoke;
+    /* padding: 0px 20px; */
+    /* margin-top: -20px; */
+    margin-top: 30px;
+    border: none;
+    cursor: pointer; 
+  }
+
+  .form button:hover{
+    background-color: rgb(0, 0, 0) ;
+  }
+
+  .warning{
+    margin-top: 20px;
+    color: red;
+    text-align: center;
+  }
+
+  .result{
+    display: flex;
+    margin-top: 10px;
+    background-image: linear-gradient(45deg, #feeeab 0%, #fb7eb3 60%);
+    /* padding: 5px 40px 5px 5px; */
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .first{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 20%;
+  }
+
+  .first .p{
+    /* text-transform: uppercase; */
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+  }
+
+  
+  .delete{
+    display: flex;
+
+  }
+  .scores{
+    width: 5%;
+  }
+
+  .del{
+    margin-left: 20px;
+    /* background-color: whitesmoke; */
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 35%;
+  }
+
+  /* .del:hover{
+    background-color: rgb(168, 192, 133);
+  } */
+
+  .icon{
+    color: rgb(0,0,0);
+  }
+    
+  </style>
+</head>
+<body>
+  <p class="heading">My To DO List</p>
+  <div class="container">
+    <div class="form">
+      <input type="text" id="addlist" class="fname" placeholder="title" />
+      
+      <button id="add">Add</button>
+    </div>
+    <p class="warning" id="warn"></p>
+
+    <div id="show"></div>
+  <script>
+    let list=document.getElementById("addlist");
+    let addBtn = document.getElementById("add");
+    addBtn.addEventListener("click", getData);
+
+function getData() {
+  if (
+    list.value == "" 
+  ) {
+    document.getElementById("warn").innerText = "All fields are mandatory to fill  .";
+  } else {
+    document.getElementById("warn").innerText = "";
+    addData();
+  }
+}
+
+function addData() {
+  
+
+  document.getElementById("show").innerHTML += `<div class="result">
+    <div class="first">
+      <p class="p">${list.value}</p>
+  
+    </div>
+    <div class="delete">
+      <div class="del icon" onclick="deleteData(this)">
+        <i style="font-size:24px" class="fa">&#xf00d;</i>
+      </div>
+      
+    </div>
+  </div>`;
+
+  list.value = "";
+}
+
+function deleteData(e) {
+  e.parentElement.parentElement.remove();
+}
+
+
+  </script>
+</body>
+</html>
