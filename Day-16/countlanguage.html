@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+  text-align: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #333;
+}
+
+p {
+  font-size: 24px;
+  color: #007bff;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Total Official Languages in the World</h1>
+  <p id="totalLanguages"></p>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+  const apiUrl = "https://restcountries.com/v3.1/all"; // Countries API URL
+
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      let languages = new Set(); // Using a Set to store unique languages
+
+      // Loop through each country's official languages
+      data.forEach((country) => {
+        if (country.hasOwnProperty("languages")) {
+          const officialLanguages = country.languages.official;
+
+          // Add each language to the Set
+          officialLanguages.forEach((language) => {
+            languages.add(language);
+          });
+        }
+      });
+
+      // Get the total count of languages
+      const totalLanguages = languages.size;
+
+      // Display the result on the webpage
+      const totalLanguagesElement = document.getElementById("totalLanguages");
+      totalLanguagesElement.textContent = `Total Official Languages: ${totalLanguages}`;
+    })
+    .catch((error) => console.log(error));
+});
+
+
+    </script>
+</body>
+</html>

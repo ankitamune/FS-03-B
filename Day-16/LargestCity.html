@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>10 Largest Countries</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Country</th>
+        <th>Area</th>
+      </tr>
+    </thead>
+    <tbody id="countryTable"></tbody>
+  </table>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const apiUrl = "https://restcountries.com/v3.1/all"; // Countries API URL
+
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      // Sort the countries by area in descending order
+      const sortedCountries = data.sort((a, b) => b.area - a.area);
+
+      // Select the table body
+      const countryTable = document.getElementById("countryTable");
+
+      // Loop through the first 10 countries
+      for (let i = 0; i < 10; i++) {
+        const country = sortedCountries[i];
+
+        // Create a new row
+        const row = document.createElement("tr");
+
+        // Create cells for rank, country name, and area
+        const rankCell = document.createElement("td");
+        rankCell.textContent = i + 1; // Rank starts from 1
+        const nameCell = document.createElement("td");
+        nameCell.textContent = country.name.common;
+        const areaCell = document.createElement("td");
+        areaCell.textContent = country.area;
+
+        // Append cells to the row
+        row.appendChild(rankCell);
+        row.appendChild(nameCell);
+        row.appendChild(areaCell);
+
+        // Append the row to the table
+        countryTable.appendChild(row);
+      }
+    })
+    .catch((error) => console.log(error));
+});
+
+  </script>
+</body>
+</html>

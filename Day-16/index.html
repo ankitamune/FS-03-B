@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countries Table</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    #search-input {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="search-input" placeholder="Search country">
+  
+  <table id="countries-table">
+    <tr>
+      <th>Country</th>
+      <th>Capital</th>
+      <th>Languages</th>
+      <th>Population</th>
+      <th>Area</th>
+    </tr>
+  </table>
+<script>
+    const countriesAPI = "https://restcountries.com/v2/all";
+
+// Fetch the data from the API
+fetch(countriesAPI)
+  .then(response => response.json())
+  .then(data => {
+    const table = document.getElementById('countries-table');
+    const searchInput = document.getElementById('search-input');
+    let countriesData = data.slice(0, 20); // Select first 20 countries
+
+    // Create a table row for each country
+    const createTable = () => {
+      table.innerHTML = '';
+
+      countriesData.forEach(country => {
+        const row = document.createElement('tr');
+
+    
+        const nameCell = document.createElement('td');
+        nameCell.textContent = country.name;
+        row.appendChild(nameCell);
+
+        const capitalCell = document.createElement('td');
+        capitalCell.textContent = country.capital;
+        row.appendChild(capitalCell);
+
+        const languagesCell = document.createElement('td');
+        const languages = country.languages.map(lang => lang.name).join(', ');
+        languagesCell.textContent = languages;
+        row.appendChild(languagesCell);
+
+        const populationCell = document.createElement('td');
+        populationCell.textContent = country.population;
+        row.appendChild(populationCell);
+
+        const areaCell = document.createElement('td');
+        areaCell.textContent = country.area;
+        row.appendChild(areaCell);
+
+        table.appendChild(row);
+      });
+    };
+
+    // Handle search functionality
+    const handleSearch = () => {
+      const searchTerm = searchInput.value.toLowerCase();
+      countriesData = data.filter(country => {
+        return country.name.toLowerCase().includes(searchTerm);
+      });
+      createTable();
+    };
+
+    // Add event listener for search input
+    searchInput.addEventListener('input', handleSearch);
+
+    // Initial table creation
+    createTable();
+  })
+  .catch(error => console.log(error));
+</script>
+</body>
+</html>
