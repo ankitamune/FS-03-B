@@ -28,42 +28,24 @@
   <div id="catNames"></div>
 
   <script>
-//     const catsAPI = "https://api.thecatapi.com/v1/breeds";
-
-// fetch(catsAPI)
-//   .then(response => response.json())
-//   .then(data => {
-//     const catNamesContainer = document.getElementById("catNames");
-//     const catNames = data.map(cat => cat.name);
-
-//     catNames.forEach(name => {
-//       const catNameElement = document.createElement("p");
-//       catNameElement.className = "catName";
-//       catNameElement.textContent = name;
-//       catNamesContainer.appendChild(catNameElement);
-//     });
-//   })
-//   .catch(error => {
-//     console.error("Error retrieving cat names:", error);
-//   });
-const catsAPI = "https://api.thecatapi.com/v1/breeds";
+    const catsAPI = "https://api.thecatapi.com/v1/breeds";
 
 fetch(catsAPI)
   .then(response => response.json())
   .then(data => {
-    // Extract weights from the response data
-    const weights = data.map(cat => cat.weight.metric);
+    const catNamesContainer = document.getElementById("catNames");
+    const catNames = data.map(cat => cat.name);
 
-    // Calculate the average weight
-    const totalWeight = weights.reduce((acc, weight) => acc + Number(weight.split(" - ")[0]), 0);
-    const averageWeight = totalWeight / weights.length;
-
-    console.log(`Average weight of a cat in metric units: ${averageWeight} kg`);
+    catNames.forEach(name => {
+      const catNameElement = document.createElement("p");
+      catNameElement.className = "catName";
+      catNameElement.textContent = name;
+      catNamesContainer.appendChild(catNameElement);
+    });
   })
   .catch(error => {
-    console.error("Error retrieving cat data:", error);
+    console.error("Error retrieving cat names:", error);
   });
-
 
   </script>
 </body>
