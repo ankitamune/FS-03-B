@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Local Storage Exersise 2</h1>
+    <script>
+        let student = {
+            firstName: "Ankita",
+            lastName: "Mune",
+            age: 20,
+            skills: ["JavaScript", "HTML", "CSS","JAVA"],
+            country: "INDIA",
+            enrolled: {
+                math: true,
+                science: false,
+                english: true,
+                history:false,
+                Marathi:true
+            }
+};
+    let studentJSON = JSON.stringify(student);
+    localStorage.setItem("student", studentJSON);
+
+    </script>
+</body>
+</html>
