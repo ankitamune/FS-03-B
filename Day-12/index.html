@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Form</title>
+  <style>
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+    input{
+      width: 500px;
+      height: 40px;
+    }
+
+    .message {
+      margin-top: 10px;
+      font-style: italic;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Dynamic Form</h1>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" class="input-field">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" class="input-field">
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" class="input-field">
+    </div>
+    <div class="message" id="message"></div>
+  </div>
+
+  <script>
+    const inputFields = document.getElementsByClassName('input-field');
+    const messageDiv = document.getElementById('message');
+
+    // Add event listeners for the "change" event on each input field
+    Array.from(inputFields).forEach(input => {
+      input.addEventListener('change', handleInputChange);
+    });
+
+    function handleInputChange(event) {
+      const fieldName = event.target.id;
+      const fieldValue = event.target.value;
+
+      messageDiv.textContent = `Field "${fieldName}" changed. New value: ${fieldValue}`;
+    }
+  </script>
+</body>
+</html>
